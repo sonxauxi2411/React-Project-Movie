@@ -1,0 +1,15 @@
+.btn {
+  button {
+    font-size: 18px;
+    width: 100%;
+    padding: 5px 10px;
+    border: none;
+    background-color: black;
+    color: aliceblue;
+  }
+  margin-left: 20px;
+
+  .active {
+    background-color: #5179ff;
+  }
+}
