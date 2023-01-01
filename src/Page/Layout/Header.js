@@ -1,28 +1,31 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import { loadingGlobalAction } from '../../Redux/LoadingGlobal'
-import style from './Layout.module.scss'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { loadingGlobalAction } from "../../Redux/LoadingGlobal";
+import style from "./Layout.module.scss";
 
 function Header() {
-  const isLoading = useSelector((state) => state.loading.globalLoading)
-  const dispatch = useDispatch
-  const [scroll, setScroll] = useState(false)
+  const isLoading = useSelector((state) => state.loading.globalLoading);
+  const dispatch = useDispatch;
+  const [scroll, setScroll] = useState(false);
+
   //xử lý thanh cuộn
   useEffect(() => {
     const changeBackground = () => {
       if (window.scrollY > 80) {
-        setScroll(true)
+        setScroll(true);
       } else {
-        setScroll(false)
+        setScroll(false);
       }
-    }
-    window.addEventListener('scroll', changeBackground)
-  }, [])
+    };
+    window.addEventListener("scroll", changeBackground);
+  }, []);
 
-  const active = ({ isActive }) => (isActive ? style.active : '')
+  const handlerClick = (e) => {};
+
+  const active = ({ isActive }) => (isActive ? style.active : "");
   return (
-    <div className={`${style.header} ${scroll ? style.scroll : ''}`}>
+    <div className={`${style.header} ${scroll ? style.scroll : ""}`}>
       <div className={style.logo}>
         <span>Moon</span>
         <span className={style.logo_title}>Light</span>
@@ -31,7 +34,7 @@ function Header() {
         <NavLink className={active} to="/">
           Home
         </NavLink>
-        <NavLink className={active} to="/movie">
+        <NavLink className={active} onClick={handlerClick} to="/movie">
           Movies
         </NavLink>
         <NavLink className={active} to="/tv">
@@ -45,7 +48,7 @@ function Header() {
         </NavLink>
       </div>
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;
