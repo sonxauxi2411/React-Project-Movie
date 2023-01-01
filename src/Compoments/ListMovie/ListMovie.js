@@ -8,8 +8,7 @@ import { loadingGlobalAction } from '../../Redux/LoadingGlobal'
 import Button from '../../UI/Button'
 import TitleHome from '../../UI/TitleHome'
 import MovieItem from '../../UI/MovieItem'
-import style from './Movie.module.scss'
-import ListMovie from '../../Compoments/ListMovie/ListMovie'
+import style from './ListMovie.module.scss'
 
 const typeMovie = [
   {
@@ -21,14 +20,12 @@ const typeMovie = [
     type: 'top_rated',
   },
 ]
-function Movie() {
-  const isLoading = useSelector((state) => state.loading.globalLoading)
 
+function ListMovie({ title }) {
+  const isLoading = useSelector((state) => state.loading.globalLoading)
   const dispatch = useDispatch()
   const [type, setType] = useState('popular')
-
-  const { data, setPage, setData } = getMovie(type)
-
+  const { data, setPage, setData } = getMovie(type, title)
   useEffect(() => {
     if (isLoading) {
       setTimeout(() => {
@@ -36,23 +33,22 @@ function Movie() {
       }, 1000)
     }
   }, [isLoading])
-  // console.log(data)
+
   const handlerType = (titleType) => {
     if (type !== titleType.type) {
       dispatch(loadingGlobalAction.setGlobalLoading(true))
       setType(titleType.type)
+      setData([])
     }
-    setData([])
   }
   const handlerLoadMore = () => {
     setPage((page) => page + 1)
   }
 
+  //   console.log(data)
   return (
     <div>
-      <ListMovie title={'movie'} />
-      {/* <Banner data={data} />
-
+      <Banner data={data} />
       <div className=" container my-4 d-flex justify-content-between">
         <div>
           <TitleHome title="Movies" />
@@ -86,9 +82,9 @@ function Movie() {
         style={{ cursor: 'pointer' }}
       >
         <p>Load More</p>
-      </div> */}
+      </div>
     </div>
   )
 }
 
-export default Movie
+export default ListMovie

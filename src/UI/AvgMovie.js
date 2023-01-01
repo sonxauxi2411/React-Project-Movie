@@ -10,7 +10,7 @@ function AvgMovie({ avg, poster }) {
     <div className={`${style.percent} ${poster ? style.poster : ''}`}>
       <CircularProgressbar
         value={percentage}
-        text={avg.toFixed(1)}
+        text={avg?.toFixed(1)}
         styles={buildStyles({
           rotation: 0.25,
 

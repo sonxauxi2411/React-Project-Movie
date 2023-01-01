@@ -1,0 +1,36 @@
+.wrapper {
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+
+
+    }
+}
+
+.header {
+    margin-top: -40%;
+    z-index: 10;
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    // overflow: hidden;
+
+}
+
+.title_movie {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    h1{
+        font-size: 50px;
+    }
+}

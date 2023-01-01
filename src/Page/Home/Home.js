@@ -9,7 +9,7 @@ function Home() {
   const data = getTreningMovies()
   return (
     <div>
-      <Banner data={data} />
+      <Banner data={data?.results} />
       <div className="container d-flex flex-column gap-4 pt-4 ">
         <PopularMovie />
         <PopularSeries />
